@@ -2,36 +2,36 @@ name: Flutter Build
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+      branches: [ main ]
+        workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+        jobs:
+          build:
+              runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+                  steps:
+                        - name: Checkout code
+                                uses: actions/checkout@v4
 
-      - name: Install Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: stable
+                                      - name: Install Flutter
+                                              uses: subosito/flutter-action@v2
+                                                      with:
+                                                                channel: stable
 
-      - name: Create missing Flutter structure if needed
-        run: |
-          if [ ! -d "android" ]; then
-            flutter create .
-          fi
+                                                                      - name: Ensure Flutter project exists
+                                                                              run: |
+                                                                                        if [ ! -d "android" ]; then
+                                                                                                    flutter create .
+                                                                                                              fi
 
-      - name: Get dependencies
-        run: flutter pub get
+                                                                                                                    - name: Install dependencies
+                                                                                                                            run: flutter pub get
 
-      - name: Build APK
-        run: flutter build apk --release
+                                                                                                                                  - name: Build APK
+                                                                                                                                          run: flutter build apk --release
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v3
-        with:
-          name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+                                                                                                                                                - name: Upload APK
+
+                                                                                                                                                                with:
+                                                                                                                                                                          name: app-release
+                                                                                                                                                                                    path: build/app/outputs/flutter-apk/app-release.apk
