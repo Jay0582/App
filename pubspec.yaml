@@ -1,0 +1,16 @@
+name: habit_epub_swipe
+description: Personal habit tracker with epub-like swipe pages
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+
+  dependencies:
+    flutter:
+        sdk: flutter
+          shared_preferences: ^2.0.15
+            intl: ^0.18.0
+
+            flutter:
+              uses-material-design: true
