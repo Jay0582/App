@@ -17,16 +17,6 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-
-      - name: Create full Flutter project if missing files
-        run: |
-          if [ ! -f "pubspec.yaml" ] || [ ! -d "android" ]; then
-            echo "Generating new Flutter project structure..."
-            flutter create .
-          else
-            echo "Flutter project structure present, skipping creation."
-          fi
-
       - name: Get dependencies
         run: flutter pub get
 
